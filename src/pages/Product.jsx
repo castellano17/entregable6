@@ -36,17 +36,22 @@ const Product = () => {
 
         {/* parte inferior */}
         <section>
-          <div>
-            <h4>{product?.brand}</h4>
-            <h3>{product?.title}</h3>
-          </div>
+          <h4>{product?.brand}</h4>
+          <h3>{product?.title}</h3>
 
           <div>
-            <h4>Quantity</h4>
             <div>
-              <button onClick={handleLess}>-</button>
-              <h4>{quantity}</h4>
-              <button onClick={handlePlus}>+</button>
+              <h4>Price</h4>
+              <h3>$ {product?.price}</h3>
+            </div>
+
+            <div>
+              <h4>Quantity</h4>
+              <div>
+                <button onClick={handleLess}>-</button>
+                <h4>{quantity}</h4>
+                <button onClick={handlePlus}>+</button>
+              </div>
             </div>
           </div>
           <button>
