@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllCartProducts } from "../store/slices/Cart.slice";
 
 const Cart = () => {
-  return <div>Cart</div>;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllCartProducts());
+  }, []);
+  return <main></main>;
 };
 
 export default Cart;

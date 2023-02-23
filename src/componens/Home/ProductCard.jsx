@@ -1,8 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addProductCart } from "../../store/slices/Cart.slice";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const handleClickProduct = () => {
     navigate(`/products/${product.id}`);
@@ -10,6 +14,11 @@ const ProductCard = ({ product }) => {
 
   const handleClickAddProduct = (e) => {
     e.stopPropagation();
+    const data = {
+      quantity: 1,
+      productId: product.id,
+    };
+    dispatch(addProductCart());
   };
 
   return (
