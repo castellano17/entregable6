@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { axiosEcommerce } from "../../utils/configAxios";
 const initialState = {
   user: {
