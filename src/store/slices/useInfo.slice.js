@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { axiosEcommerce } from "../../utils/configAxios";
 const initialState = {
   user: {
     id: 0,
@@ -27,10 +28,8 @@ const userInfoSlice = createSlice({
 const { setUserInfoGlobal } = userInfoSlice.actions;
 
 export const loginUser = (data) => (dispatch) => {
-  const URL = "https://e-commerce-api-v2.academlo.tech/api/v1/users/login";
-  // axiosEcommerce
-  axios
-    .post(URL, data)
+  axiosEcommerce
+    .post("/users/login", data)
     .then((res) => {
       localStorage.setItem("userInfo", JSON.stringify(res.data));
       dispatch(setUserInfoGlobal(res.data));
