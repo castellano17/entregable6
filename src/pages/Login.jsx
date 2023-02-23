@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, userLogOut } from "../store/slices/useInfoSlice";
+import { loginUser, userLogOut } from "../store/slices/useInfo.slice";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -15,6 +15,7 @@ const Login = () => {
   // console.log(user, firstName);
 
   const dispatch = useDispatch();
+
   const submit = (data) => {
     // console.log(data);
     dispatch(loginUser(data));

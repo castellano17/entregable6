@@ -5,7 +5,7 @@ const Nabar = () => {
   return (
     <nav>
       <Link to="/">
-        <h2>E-commerce</h2>
+        <h2>e-commerce</h2>
       </Link>
 
       <div>
