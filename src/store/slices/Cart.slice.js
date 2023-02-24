@@ -45,4 +45,11 @@ export const updateProductCart = (id, data) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const purchaseCart = () => (dispatch) => {
+  axiosEcommerce
+    .post("/purchases", {}, getConfig())
+    .then((res) => dispatch(setProductsCartGlobal([])))
+    .catch((err) => console.log(err));
+};
+
 export default cartSlice.reducer;
