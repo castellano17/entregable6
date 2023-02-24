@@ -13,11 +13,11 @@ const CardProduct = ({ product }) => {
           <h3>{product.quantity}</h3>
           <button>+</button>
         </div>
-      </section>
-      <section>
-        <i className="bx bx-trash"></i>
-        <h3>Total</h3>
-        <h3>$ {product.quantity * product.product.price}</h3>
+        <section>
+          <i className="bx bx-trash"></i>
+          <h3>Total</h3>
+          <h3>$ {product.quantity * product.product.price}</h3>
+        </section>
       </section>
     </article>
   );

@@ -30,5 +30,5 @@ export const addProductCart = (data) => (dispatch) => {
     .then((res) => dispatch(getAllCartProducts()))
     .catch((err) => console.log(err));
 };
-//jj
+
 export default cartSlice.reducer;

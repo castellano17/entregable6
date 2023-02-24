@@ -5,7 +5,7 @@ import { getAllCartProducts } from "../store/slices/Cart.slice";
 
 const Cart = () => {
   const { products } = useSelector((store) => store.cart);
-
+  // console.log(products);
   const dispatch = useDispatch();
 
   useEffect(() => {

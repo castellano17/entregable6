@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllCartProducts());
   }, []);
