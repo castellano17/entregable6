@@ -7,8 +7,16 @@ import Purchases from "./pages/Purchases";
 import Cart from "./pages/Cart";
 import ProtectedUserLogged from "./componens/App/ProtectedUserLogged";
 import Navbar from "./componens/Layout/Nabar";
+import { useEffect } from "react";
+import { getAllCartProducts } from "./store/slices/Cart.slice";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllCartProducts());
+  }, []);
+
   return (
     <div className="App">
       <Navbar />

@@ -27,7 +27,7 @@ export const getAllCartProducts = () => (dispatch) => {
 export const addProductCart = (data) => (dispatch) => {
   axiosEcommerce
     .post("/cart", data, getConfig())
-    .then((res) => console.log(res.data))
+    .then((res) => dispatch(getAllCartProducts()))
     .catch((err) => console.log(err));
 };
 

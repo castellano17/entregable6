@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
       quantity: 1,
       productId: product.id,
     };
-    dispatch(addProductCart());
+    dispatch(addProductCart(data));
   };
 
   return (
