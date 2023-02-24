@@ -15,7 +15,10 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllCartProducts());
+    const token = localStorage.getItem("userInfo");
+    if (token) {
+      dispatch(getAllCartProducts());
+    }
   }, []);
 
   return (
