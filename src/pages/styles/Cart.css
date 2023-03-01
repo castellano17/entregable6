@@ -1,52 +1,29 @@
 .cart_listProducts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  grid-template-rows: auto;
-  gap: 40px;
-  padding: 20px;
+  margin-top: 150px;
   max-width: 1200px;
+  align-items: center;
   margin: 0 auto;
 }
-
-@media only screen and (max-width: 768px) {
-  .cart_listProducts {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-}
-
-/* @media only screen and (min-width: 446px) and (max-width: 580px) {
-  .cart_listProducts {
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  }
-} */
 
 .cart__listFooter {
   border-top: 1px solid var(--light-gray);
   padding: 30px 20px;
-}
-
-.cart__totalitems {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.cart__listTotal {
-  /* color: var(--light-gray);
-  font-weight: bold; */
-}
-
-.cart__listtotal-price {
-  font-size: 20px;
-  font-weight: 800;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart__list-btn {
   background-color: var(--primary);
   color: white;
-  padding: 10px;
-  width: 100%;
+  padding: 5px;
+  margin: 8px;
+  width: 100px;
   cursor: pointer;
   border: none;
   font-size: 15px;
@@ -55,5 +32,5 @@
 
 .cart__list-btn:hover {
   background-color: rgba(185, 48, 48, 0.818);
-  letter-spacing: 3px;
+  letter-spacing: 1px;
 }

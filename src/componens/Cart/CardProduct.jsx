@@ -35,25 +35,28 @@ const CardProduct = ({ product }) => {
 
   return (
     <article className="cardProduct">
-      <div className="cardProduct__header">
-        <div className="cardProduct-img">
-          <img src={product.product.images[0].url} alt="" />
-        </div>
+      <div className="cardProduct-img">
+        <img src={product.product.images[0].url} alt="" />
       </div>
 
-      <section className="cardProduct__infoContainer">
+      <section>
         <h3 className="cardProduct__title">{product.product.title}</h3>
         <div className="cardProduct__quantity">
-          <button onClick={handleClickLess}>-</button>
-          <h3>{product.quantity}</h3>
-          <button onClick={handleClickPlus}>+</button>
-        </div>
-        <section>
+          <div className="counter">
+            <button onClick={handleClickLess} className="less">
+              -
+            </button>
+            <h3>{product.quantity}</h3>
+            <button onClick={handleClickPlus} className="plus">
+              +
+            </button>
+          </div>
           <i
             onClick={handleDeleteCartProduct}
             className="cardProduct-btn bx bx-trash"
           ></i>
-
+        </div>
+        <section>
           <div className="cardProduct__priceTotal">
             <h3 className="cardProduct__total">Total</h3>
             <h3 className="cardProduct__price">

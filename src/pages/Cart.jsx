@@ -29,15 +29,14 @@ const Cart = () => {
         ))}
       </section>
       <hr />
-      <section className="cart__listFooter">
-        <div className="cart__totalitems">
-          <div className="cart__listTotal">Total</div>
-          <h3 className="cart__listtotal-price">$ {totalPriceCart}</h3>
+      <section>
+        <div className="cart__listFooter">
+          <h3>Total</h3>
+          <h3>$ {totalPriceCart}</h3>
+          <button className="cart__list-btn" onClick={handlePurchaseCart}>
+            Checkout
+          </button>
         </div>
-
-        <button className="cart__list-btn" onClick={handlePurchaseCart}>
-          Checkout
-        </button>
       </section>
     </main>
   );

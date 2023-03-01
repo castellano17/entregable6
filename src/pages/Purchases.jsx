@@ -14,10 +14,10 @@ const Purchases = () => {
   }, []);
   return (
     <main>
-      <section>
+      <section className="purchases">
         <section>
-          <h3>My purchases</h3>
-          <section>
+          <h3 className="purchases__title">My purchases</h3>
+          <section className="purchases__container">
             {purchases.map((purchase) => (
               <PurchasesCard key={purchase.id} purchase={purchase} />
             ))}

@@ -1,12 +1,22 @@
 .navbar {
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 10px;
   position: sticky;
   top: 0;
   background-color: white;
-  z-index: 2;
+  z-index: 2; */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  background-color: white;
+  top: 0;
+  padding: 10px 10px;
+  z-index: 3;
+  width: 100%;
 }
 
 .navbar__name,

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../componens/Home/ProductCard";
+import ProductFilter from "../componens/Home/ProductFilter";
 import { axiosEcommerce } from "../utils/configAxios";
 import "./styles/Home.css";
 
@@ -46,29 +47,11 @@ const Home = () => {
 
   return (
     <main className="home">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input id="nameProduct" type="text" />
-          <button>
-            <i className="bx bx-search"></i>
-          </button>
-        </div>
-        <div>
-          <h3>Categories</h3>
-          <ul>
-            <li onClick={() => setCategoryFilter(0)}>All</li>
-            {categories.map((category) => (
-              <li
-                onClick={() => setCategoryFilter(category.id)}
-                key={category.id}
-              >
-                {category.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </form>
-
+      <ProductFilter
+        categories={categories}
+        handleSubmit={handleSubmit}
+        setCategoryFilter={setCategoryFilter}
+      />
       <section className="home__listProducts">
         {filterProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
