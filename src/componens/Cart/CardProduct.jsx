@@ -4,6 +4,7 @@ import {
   deleteProductCart,
   updateProductCart,
 } from "../../store/slices/Cart.slice";
+import "./Styles/CardProduct.css";
 
 const CardProduct = ({ product }) => {
   const dispatch = useDispatch();
@@ -33,21 +34,32 @@ const CardProduct = ({ product }) => {
   };
 
   return (
-    <article>
-      <div>
-        <img src={product.product.images[0].url} alt="" />
+    <article className="cardProduct">
+      <div className="cardProduct__header">
+        <div className="cardProduct-img">
+          <img src={product.product.images[0].url} alt="" />
+        </div>
       </div>
-      <section>
-        <h3>{product.product.title}</h3>
-        <div>
+
+      <section className="cardProduct__infoContainer">
+        <h3 className="cardProduct__title">{product.product.title}</h3>
+        <div className="cardProduct__quantity">
           <button onClick={handleClickLess}>-</button>
           <h3>{product.quantity}</h3>
           <button onClick={handleClickPlus}>+</button>
         </div>
         <section>
-          <i onClick={handleDeleteCartProduct} className="bx bx-trash"></i>
-          <h3>Total</h3>
-          <h3>$ {product.quantity * product.product.price}</h3>
+          <i
+            onClick={handleDeleteCartProduct}
+            className="cardProduct-btn bx bx-trash"
+          ></i>
+
+          <div className="cardProduct__priceTotal">
+            <h3 className="cardProduct__total">Total</h3>
+            <h3 className="cardProduct__price">
+              $ {product.quantity * product.product.price}
+            </h3>
+          </div>
         </section>
       </section>
     </article>
