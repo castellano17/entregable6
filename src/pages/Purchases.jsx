@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PurchasesCard from "../componens/Purchases/PurchasesCard";
 import { axiosEcommerce, getConfig } from "../utils/configAxios";
+import "./styles/Purchases.css";
 
 const Purchases = () => {
   const [purchases, setPurchases] = useState([]);

@@ -4,12 +4,16 @@ import { useParams } from "react-router-dom";
 import ProductCard from "../componens/Home/ProductCard";
 import { addProductCart } from "../store/slices/Cart.slice";
 import { axiosEcommerce } from "../utils/configAxios";
+import "./styles/Product.css";
 
 const Product = () => {
   const [product, setProduct] = useState();
   const [quantity, setQuantity] = useState(1);
   const [similarProducts, setSimilarProducts] = useState([]);
-  console.log(product?.categoryId);
+  const [indexSlider, setIndexSlider] = useState(0);
+  //console.log(product?.categoryId);
+
+  const arrayClassesSlider = ["first", "second", "third"];
 
   const { id } = useParams();
 
@@ -29,6 +33,26 @@ const Product = () => {
       productId: product.id,
     };
     dispatch(addProductCart(data));
+  };
+
+  const handleClickPrevius = () => {
+    const newIndexSlider = indexSlider - 1;
+    const lastPosition = arrayClassesSlider.length - 1;
+    if (newIndexSlider < 0) {
+      setIndexSlider(lastPosition);
+    } else {
+      setIndexSlider(newIndexSlider);
+    }
+  };
+
+  const handleClickNext = () => {
+    const newIndexSlider = indexSlider + 1;
+    const lastPosition = arrayClassesSlider.length - 1;
+    if (newIndexSlider > lastPosition) {
+      setIndexSlider(0);
+    } else {
+      setIndexSlider(newIndexSlider);
+    }
   };
 
   useEffect(() => {
@@ -57,44 +81,63 @@ const Product = () => {
   }, [id]);
 
   return (
-    <main>
-      <section>
+    <main className="product">
+      <section className="product__detail">
         {/*parte superior */}
-        <section>
-          <div>
-            <img src={product?.images[0].url} alt="" />
+        <section className="product__slider">
+          <section
+            className={`product__detail-imgContainer ${arrayClassesSlider[indexSlider]}`}
+          >
+            <div className="product__detail-img">
+              <img src={product?.images[0].url} alt="" />
+            </div>
+            <div className="product__detail-img">
+              <img src={product?.images[1].url} alt="" />
+            </div>
+            <div className="product__detail-img">
+              <img src={product?.images[2].url} alt="" />
+            </div>
+          </section>
+          <div onClick={handleClickPrevius} className="product__btn-left">
+            <i className="bx bx-chevron-left"></i>
+          </div>
+          <div onClick={handleClickNext} className="product__btn-right">
+            <i className="bx bx-chevron-right"></i>
           </div>
         </section>
 
         {/* parte inferior */}
-        <section>
-          <h4>{product?.brand}</h4>
-          <h3>{product?.title}</h3>
+        <section className="product__detail-infoContainer">
+          <h4 className="product__detail-brand">{product?.brand}</h4>
+          <h3 className="product__detail-title">{product?.title}</h3>
 
-          <div>
-            <div>
-              <h4>Price</h4>
-              <h3>$ {product?.price}</h3>
+          <div className="product__detail-quantityContainer">
+            <div className="product__detail-priceContainer">
+              <h4 className="product__detail-priceTitle">Price</h4>
+              <h3 className="product__detail-price">$ {product?.price}</h3>
             </div>
 
-            <div>
-              <h4>Quantity</h4>
-              <div>
+            <div className="product__detail-quantity">
+              <h4 className="product__detail-quantityTitle">Quantity</h4>
+              <div className="product__detail-counter">
                 <button onClick={handleLess}>-</button>
                 <h4>{quantity}</h4>
                 <button onClick={handlePlus}>+</button>
               </div>
             </div>
           </div>
-          <button onClick={handleClickAddProduct}>
+          <button
+            className="product__detail-btn"
+            onClick={handleClickAddProduct}
+          >
             Add to cart <i className="bx bx-cart"></i>{" "}
           </button>
-          <p>{product?.description}</p>
+          <p className="product__detail-text">{product?.description}</p>
         </section>
       </section>
 
-      <h2>Discover similar items</h2>
-      <section>
+      <h2 className="product__titleSimilar">Discover similar items</h2>
+      <section className="product__similarContainer">
         {similarProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

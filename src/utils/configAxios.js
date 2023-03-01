@@ -8,7 +8,7 @@ export const getConfig = () => {
   const config = {
     headers: {
       Authorization: `Bearer ${
-        JSON.parse(localStorage.getItem("userInfo")).token
+        JSON.parse(localStorage.getItem("userInfo"))?.token
       }`,
     },
   };

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { axiosEcommerce } from "../../utils/configAxios";
+import { setProductsCartGlobal } from "./Cart.slice";
 const initialState = {
   user: {
     id: 0,
@@ -39,6 +40,7 @@ export const loginUser = (data) => (dispatch) => {
 export const userLogOut = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch(setUserInfoGlobal(initialState));
+  dispatch(setProductsCartGlobal([]));
 };
 
 export default userInfoSlice.reducer;
