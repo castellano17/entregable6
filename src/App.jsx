@@ -10,7 +10,7 @@ import Navbar from "./componens/Layout/Navbar";
 import { useEffect } from "react";
 import { getAllCartProducts } from "./store/slices/Cart.slice";
 import { useDispatch, useSelector } from "react-redux";
-import Footer from "./pages/Footer";
+import Footer from "./componens/Layout/Footer";
 import Notification from "./componens/App/Notification";
 
 function App() {
