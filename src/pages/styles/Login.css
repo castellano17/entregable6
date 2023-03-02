@@ -3,7 +3,7 @@
   min-height: calc(100vh -42px);
   display: grid;
   place-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 120px;
 }
 
 .login__logged__container {

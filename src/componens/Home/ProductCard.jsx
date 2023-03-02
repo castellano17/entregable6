@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
         <h4 className="productCard__brand">{product.brand}</h4>
         <h3 className="productCard__title">{product.title}</h3>
         <h4 className="productCard__priceTitle">Price</h4>
-        <h3 className="productCard__price">$ {product.price}</h3>
+        <h3 className="productCard__price"> $ {product.price}</h3>
         <button className="productCard__btn" onClick={handleClickAddProduct}>
           <i className="bx bx-cart"></i>
         </button>

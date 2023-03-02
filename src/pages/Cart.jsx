@@ -31,8 +31,8 @@ const Cart = () => {
       <hr />
       <section>
         <div className="cart__listFooter">
-          <h3>Total</h3>
-          <h3>$ {totalPriceCart}</h3>
+          <h3 className="cart__total">Total </h3>
+          <h3> $ {totalPriceCart}</h3>
           <button className="cart__list-btn" onClick={handlePurchaseCart}>
             Checkout
           </button>

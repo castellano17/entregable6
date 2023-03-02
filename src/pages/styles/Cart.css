@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+.cart__total {
+  padding: 5px;
+}
+
 .cart__list-btn {
   background-color: var(--primary);
   color: white;
