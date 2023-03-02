@@ -1,22 +1,14 @@
 .navbar {
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 10px;
-  position: sticky;
-  top: 0;
-  background-color: white;
-  z-index: 2; */
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   background-color: white;
   top: 0;
-  padding: 10px 10px;
   z-index: 3;
   width: 100%;
+  padding: 0 30px;
+  margin-bottom: 8px;
 }
 
 .navbar__name,
@@ -64,5 +56,22 @@
   .navbar__containerLinks {
     gap: 40px;
     padding: 8px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .navbar {
+    width: 800px;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar {
+    margin-bottom: 10px;
+  }
+  .navbar__name {
+    font-size: 15px;
   }
 }
