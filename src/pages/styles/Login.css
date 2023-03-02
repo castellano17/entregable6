@@ -49,6 +49,7 @@
 .login-form__title {
   font-size: 23px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .login-form__containerTest {

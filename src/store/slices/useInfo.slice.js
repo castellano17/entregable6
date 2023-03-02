@@ -22,6 +22,7 @@ const userInfoSlice = createSlice({
     setUserInfoGlobal: (state, action) => {
       return action.payload;
     },
+    signupUser: (state, action) => {},
   },
 });
 
@@ -41,6 +42,18 @@ export const userLogOut = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch(setUserInfoGlobal(initialState));
   dispatch(setProductsCartGlobal([]));
+};
+
+export const signup = (data) => (dispatch) => {
+  axiosEcommerce
+    .post("/users", data)
+    .then((res) => {
+      localStorage.setItem("userInfo", JSON.stringify(res.data));
+      dispatch(setUserInfoGlobal(res.data));
+      dispatch(setUserInfoGlobal(initialState));
+      dispatch(setProductsCartGlobal([]));
+    })
+    .catch((err) => console.log(err));
 };
 
 export default userInfoSlice.reducer;

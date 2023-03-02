@@ -12,6 +12,7 @@ import { getAllCartProducts } from "./store/slices/Cart.slice";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "./componens/Layout/Footer";
 import Notification from "./componens/App/Notification";
+import SignUp from "./pages/SignUp";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products/:id" element={<Product />} />
+        <Route path="/signup" element={<SignUp />} />
 
         <Route element={<ProtectedUserLogged />}>
           <Route path="/purchases" element={<Purchases />} />

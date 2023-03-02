@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { loginUser, userLogOut } from "../store/slices/useInfo.slice";
 import "./styles/Login.css";
 
@@ -28,6 +29,7 @@ const Login = () => {
   const handleLogOut = () => {
     dispatch(userLogOut());
   };
+
   return (
     <main className="login">
       {token ? (
@@ -78,7 +80,10 @@ const Login = () => {
           </div>
           <button className="login-form__btn">Login</button>
           <p className="login-form__footerText">
-            Don't have an account? <span>Sign up</span>
+            Don't have an account?
+            <span>
+              <Link to="/signup"> Sign Up</Link>
+            </span>
           </p>
         </form>
       )}
