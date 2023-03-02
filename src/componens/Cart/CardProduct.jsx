@@ -40,7 +40,9 @@ const CardProduct = ({ product }) => {
       </div>
 
       <section>
-        <h3 className="cardProduct__title">{product.product.title}</h3>
+        <div className="cardProduct__title-container">
+          <h3 className="cardProduct__title">{product.product.title}</h3>
+        </div>
         <div className="cardProduct__quantity">
           <div className="counter">
             <button onClick={handleClickLess} className="less">

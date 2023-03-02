@@ -13,6 +13,11 @@
   height: 200px;
 }
 
+.cardProduct__title-container {
+  width: 250px;
+  margin: 0 auto;
+}
+
 .cardProduct__title {
   margin: 10px;
 }
