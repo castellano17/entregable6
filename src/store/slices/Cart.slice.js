@@ -41,6 +41,13 @@ export const addProductCart = (data) => (dispatch) => {
           dispatch(setChangeErrorStatus());
         }, 2500);
       }
+
+      if (err.response?.data === "Forbidden") {
+        dispatch(setChangeErrorStatus());
+        setTimeout(() => {
+          dispatch(setChangeErrorStatus());
+        }, 2500);
+      }
     });
 };
 

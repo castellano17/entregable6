@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProductCart } from "../../store/slices/Cart.slice";
 import "./styles/ProductCard.css";
@@ -12,13 +12,20 @@ const ProductCard = ({ product }) => {
     navigate(`/products/${product.id}`);
   };
 
+  const { token } = useSelector((store) => store.userInfo);
+
   const handleClickAddProduct = (e) => {
     e.stopPropagation();
+
+    // if (token) {
     const data = {
       quantity: 1,
       productId: product.id,
     };
     dispatch(addProductCart(data));
+    // } else {
+    //   console.log("Please login to add the product to the cart.");
+    // }
   };
 
   return (
