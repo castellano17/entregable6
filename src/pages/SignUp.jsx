@@ -19,7 +19,17 @@ const SignUp = () => {
     });
   };
 
-  const { register, handleSubmit, reset } = useForm();
+  const regexEmail =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  console.log(errors);
   return (
     <main className="login">
       <form className="login-form__container" onSubmit={handleSubmit(submit)}>
@@ -30,11 +40,25 @@ const SignUp = () => {
             Email
           </label>
           <input
-            required
-            className="login-form__input"
+            className={`login-form__input ${
+              errors.email ? "input__error" : ""
+            }`}
             type="email"
-            {...register("email")}
+            {...register("email", {
+              required: "This is field is requerid",
+              maxLength: {
+                value: 150,
+                message: "Email is too long",
+              },
+              pattern: {
+                value: regexEmail,
+                message: "Thi is not a valid email",
+              },
+            })}
           />
+          {errors.email && (
+            <p className="login-form__error">{errors.email.message} </p>
+          )}
         </div>
 
         <div className="login-form__divInfo">
@@ -42,11 +66,21 @@ const SignUp = () => {
             First Name
           </label>
           <input
-            required
-            className="login-form__input"
+            className={`login-form__input ${
+              errors.firstName ? " input__error" : ""
+            }`}
             type="text"
-            {...register("firstName")}
+            {...register("firstName", {
+              required: "This is field is requerid",
+              maxLength: {
+                value: 25,
+                message: "Text is too long",
+              },
+            })}
           />
+          {errors.firstName && (
+            <p className="login-form__error">{errors.firstName.message} </p>
+          )}
         </div>
 
         <div className="login-form__divInfo">
@@ -54,11 +88,21 @@ const SignUp = () => {
             Last Name
           </label>
           <input
-            required
-            className="login-form__input"
+            className={`login-form__input ${
+              errors.lastName ? " input__error" : ""
+            }`}
             type="text"
-            {...register("lastName")}
+            {...register("lastName", {
+              required: "This is field is requerid",
+              maxLength: {
+                value: 25,
+                message: "Text is too long",
+              },
+            })}
           />
+          {errors.lastName && (
+            <p className="login-form__error">{errors.lastName.message} </p>
+          )}
         </div>
 
         <div className="login-form__divInfo">
@@ -66,10 +110,25 @@ const SignUp = () => {
             Password
           </label>
           <input
-            className="login-form__input"
-            type="password"
-            {...register("password")}
+            className={`login-form__input ${
+              errors.password ? " input__error" : ""
+            }`}
+            type="text"
+            {...register("password", {
+              required: "This is field is requerid",
+              minLength: {
+                value: 8,
+                message: "Minimum 8 digit password ",
+              },
+              maxLength: {
+                value: 50,
+                message: "Text is too long",
+              },
+            })}
           />
+          {errors.password && (
+            <p className="login-form__error">{errors.password.message} </p>
+          )}
         </div>
 
         <div className="login-form__divInfo">
@@ -77,11 +136,25 @@ const SignUp = () => {
             Phone (10 characters)
           </label>
           <input
-            required
-            className="login-form__input"
+            className={`login-form__input ${
+              errors.phone ? " input__error" : ""
+            }`}
             type="number"
-            {...register("phone")}
+            {...register("phone", {
+              required: "This is field is requerid",
+              minLength: {
+                value: 10,
+                message: "Minimum 10 digit phone number ",
+              },
+              maxLength: {
+                value: 25,
+                message: "Telephone maximum 25 digits",
+              },
+            })}
           />
+          {errors.phone && (
+            <p className="login-form__error">{errors.phone.message} </p>
+          )}
         </div>
 
         <button className="login-form__btn">Sign up</button>

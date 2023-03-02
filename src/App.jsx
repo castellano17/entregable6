@@ -10,7 +10,6 @@ import Navbar from "./componens/Layout/Navbar";
 import { useEffect } from "react";
 import { getAllCartProducts } from "./store/slices/Cart.slice";
 import { useDispatch, useSelector } from "react-redux";
-import Footer from "./componens/Layout/Footer";
 import Notification from "./componens/App/Notification";
 import SignUp from "./pages/SignUp";
 
@@ -39,7 +38,6 @@ function App() {
           <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
-      <Footer />
     </div>
   );
 }
