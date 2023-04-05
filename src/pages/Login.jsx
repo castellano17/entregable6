@@ -50,10 +50,10 @@ const Login = () => {
           <div className="login-form__containerTest">
             <h4 className="login-form__titleTest">Text data</h4>
             <div className="login-form__emailTest">
-              <i className="bx bx-envelope"></i>esmir@esmir.net
+              <i className="bx bx-envelope"></i>john@gmail.com
             </div>
             <div className="login-form__passwordTest">
-              <i className="bx bx-lock-alt"></i>12345678
+              <i className="bx bx-lock-alt"></i>john1234
             </div>
           </div>
 

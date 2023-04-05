@@ -3,6 +3,7 @@
   min-height: calc(100vh -42px);
   display: grid;
   place-content: center;
+  height: 600px;
 }
 
 .login__logged__container {
