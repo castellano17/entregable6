@@ -29,13 +29,19 @@ const userInfoSlice = createSlice({
 const { setUserInfoGlobal } = userInfoSlice.actions;
 
 export const loginUser = (data) => (dispatch) => {
-  axiosEcommerce
-    .post("/users/login", data)
-    .then((res) => {
-      localStorage.setItem("userInfo", JSON.stringify(res.data));
-      dispatch(setUserInfoGlobal(res.data));
-    })
-    .catch((err) => console.log(err));
+  return new Promise((resolve, reject) => {
+    // Devuelve una promesa para poder capturar el error en el componente
+    axiosEcommerce
+      .post("/users/login", data)
+      .then((res) => {
+        localStorage.setItem("userInfo", JSON.stringify(res.data));
+        dispatch(setUserInfoGlobal(res.data));
+        resolve(); // Resuelve la promesa si la petición fue exitosa
+      })
+      .catch((err) => {
+        reject(new Error("Usuario o clave incorrecta")); // Rechaza la promesa con un nuevo error
+      });
+  });
 };
 
 export const userLogOut = () => (dispatch) => {

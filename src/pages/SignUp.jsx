@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { signup } from "../store/slices/useInfo.slice";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const SignUp = () => {
       password: "",
       phone: "",
     });
+    showAlert("success", "Usuario creado correctamente");
   };
 
   const regexEmail =
@@ -30,6 +32,26 @@ const SignUp = () => {
   } = useForm();
 
   console.log(errors);
+
+  const showAlert = (type, message) => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: type,
+      title: message,
+    });
+  };
+
   return (
     <main className="login">
       <form className="login-form__container" onSubmit={handleSubmit(submit)}>
@@ -63,7 +85,7 @@ const SignUp = () => {
 
         <div className="login-form__divInfo">
           <label className="login-form__label" htmlFor="">
-            First Name
+            FirstName
           </label>
           <input
             className={`login-form__input ${
@@ -85,7 +107,7 @@ const SignUp = () => {
 
         <div className="login-form__divInfo">
           <label className="login-form__label" htmlFor="">
-            Last Name
+            LastName
           </label>
           <input
             className={`login-form__input ${
@@ -113,7 +135,7 @@ const SignUp = () => {
             className={`login-form__input ${
               errors.password ? " input__error" : ""
             }`}
-            type="text"
+            type="password"
             {...register("password", {
               required: "This is field is requerid",
               minLength: {

@@ -4,9 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { loginUser, userLogOut } from "../store/slices/useInfo.slice";
 import "./styles/Login.css";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const regexEmail =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const {
     token,
@@ -17,17 +26,43 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const submit = (data) => {
-    // console.log(data);
-    dispatch(loginUser(data));
-    reset({
-      email: "",
-      password: "",
-    });
+  const submit = async (data) => {
+    try {
+      await dispatch(loginUser(data));
+      reset({
+        email: "",
+        password: "",
+      });
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        showAlert("error", "Usuario o clave incorrecta");
+      } else {
+        showAlert("error", "Usuario o clave incorrecta");
+      }
+    }
   };
 
   const handleLogOut = () => {
     dispatch(userLogOut());
+  };
+
+  const showAlert = (type, message) => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: type,
+      title: message,
+    });
   };
 
   return (
@@ -62,10 +97,25 @@ const Login = () => {
               Email
             </label>
             <input
-              className="login-form__input"
+              className={`login-form__input ${
+                errors.email ? "input__error " : ""
+              }`}
               type="text"
-              {...register("email")}
+              {...register("email", {
+                required: "This email is requerid",
+                maxLength: {
+                  value: 150,
+                  message: "email is too long",
+                },
+                pattern: {
+                  value: regexEmail,
+                  message: "Thi is not a valid email",
+                },
+              })}
             />
+            {errors.email && (
+              <p className="login-form__error">{errors.email.message} </p>
+            )}
           </div>
 
           <div className="login-form__divInfo">
@@ -73,10 +123,25 @@ const Login = () => {
               Password
             </label>
             <input
-              className="login-form__input"
+              className={`login-form__input ${
+                errors.password ? " input__error" : ""
+              }`}
               type="password"
-              {...register("password")}
+              {...register("password", {
+                required: "This is field is requerid",
+                minLength: {
+                  value: 8,
+                  message: "Minimum 8 digit password ",
+                },
+                maxLength: {
+                  value: 50,
+                  message: "Text is too long",
+                },
+              })}
             />
+            {errors.password && (
+              <p className="login-form__error">{errors.password.message} </p>
+            )}
           </div>
           <button className="login-form__btn">Login</button>
           <p className="login-form__footerText">
